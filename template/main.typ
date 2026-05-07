@@ -2,7 +2,7 @@
 
 #show: ieee.with(
   title: [Un Sistema de Composición Tipográfica para Desenredar el Proceso de Escritura Científica],
-  abstract: [
+  summary: [
     El proceso de escritura científica a menudo se enreda con las complejidades de la composición tipográfica, lo que genera frustración y pérdida de tiempo para los investigadores. En este artículo, presentamos Typst, un nuevo sistema de composición tipográfica diseñado específicamente para la escritura científica. Typst desenreda el proceso de composición tipográfica, permitiendo a los investigadores redactar artículos más rápido. En una serie de experimentos demostramos que Typst ofrece varias ventajas, incluyendo una creación de documentos más rápida, una sintaxis simplificada y una mayor facilidad de uso.
   ],
   authors: (
@@ -30,14 +30,19 @@
   index-terms: ("Escritura científica", "Composición tipográfica", "Creación de documentos", "Sintaxis"),
   bibliography: bibliography("refs.bib"),
   figure-supplement: [Figura.],
-  summary: lorem(124),
   paper-size: "us-letter",
   references-text: [referencias],
   index-terms-text: [_Términos índice_],
-  abstract-text: [Abstracto],
   summary-text: [Resumen],
   // El contenido del artículo.
   lang: "es",
+  // typst no soporta meses en otro idioma que no sea inglés
+  date: [
+    // DD de mayo de AAAA
+    #datetime.today().display("[day] de")
+    mayo
+    #datetime.today().display("de [year]")
+  ],
 )
 
 = Introducción
