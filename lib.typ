@@ -28,6 +28,8 @@
   summary-text: [Summary],
   // The paper's content.
   lang: "en",
+  // date
+  date: none,
   body,
 ) = {
   // Set document metadata.
@@ -237,6 +239,14 @@
   )
 
   set par(justify: true, first-line-indent: (amount: 1em, all: true), spacing: 0.5em, leading: 0.5em)
+
+  if (date != none) {
+    place(
+      top + center,
+      scope: "parent",
+      float: true,
+    )[#date]
+  }
 
   if (summary != none) {
     place(
