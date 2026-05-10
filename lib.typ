@@ -9,6 +9,7 @@
   authors: (),
   // The paper's abstract. Can be omitted if you don't have one.
   abstract: none,
+  // The paper's summary. Can be omitted if you don't have one.
   summary: none,
   // Add line number to code blocks
   code-lines: false,
@@ -26,10 +27,15 @@
   index-terms-text: [_Index Terms_],
   abstract-text: [_Abstract_],
   summary-text: [Summary],
-  // The paper's content.
   lang: "en",
   // date
   date: none,
+  // Use this if you get the unknown font warning or you want to change it
+  font: "TeX Gyre Termes",
+  font-code: "Adwaita Mono",
+  // text in the left margin
+  aside: none,
+  // The paper's content.
   body,
 ) = {
   // Set document metadata.
@@ -39,10 +45,30 @@
   // Set the body font.
   // As of 2024-08, the IEEE LaTeX template uses wider interword spacing
   // - See e.g. the definition \def\@IEEEinterspaceratioM{0.35} in IEEEtran.cls
-  set text(font: "TeX Gyre Termes", size: 10pt, spacing: .35em)
+  set text(font: font, size: 10pt, spacing: .35em)
 
   // Enums numbering
   set enum(numbering: "1)a)i)")
+
+  // page numbering
+  set page(numbering: "1", number-align: center)
+
+  set page(
+    background: context {
+      if aside != none {
+        set text(size: 8pt, fill: luma(60%))
+        place(
+          left + horizon,
+          dx: page.margin.left / 2,
+
+          rotate(-90deg, reflow: true)[
+            #align(center, aside)
+          ],
+        )
+      }
+    },
+  )
+
 
   // Tables & figures
   show figure: set block(spacing: 15.5pt)
@@ -74,7 +100,7 @@
   // Code blocks
   show raw: set text(
     ligatures: false,
-    font: "Adwaita Mono",
+    font: font-code,
     spacing: 100%,
   )
 

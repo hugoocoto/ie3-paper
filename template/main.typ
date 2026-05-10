@@ -43,6 +43,7 @@
     mayo
     #datetime.today().display("de [year]")
   ],
+  aside: [A template by Hugo Coto.],
 )
 
 = Introducción
